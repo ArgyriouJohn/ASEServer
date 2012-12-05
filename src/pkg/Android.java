@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 
 import javax.annotation.Resource;
 
-import com.example.ase_map.ServerData;
+import com.example.ase_map.UserAuth;
 
 public class Android 
 {
@@ -21,11 +21,11 @@ public class Android
 		  String output="WS : ";
 		  try
 		  {
-			  ServerData appData = new ServerData("","",0.0,0.0);
+			  UserAuth appData = new UserAuth("","","");
 			  try
 			  { 
 				  //byte[] decoded = Base64Coder.decode(data.toString());
-				  appData = (ServerData) new ObjectInputStream(new ByteArrayInputStream(data)).readObject();
+				  appData = (UserAuth) new ObjectInputStream(new ByteArrayInputStream(data)).readObject();
 			  }
 			  catch(Exception e)
 			  {
@@ -35,18 +35,44 @@ public class Android
 			  Class.forName("com.mysql.jdbc.Driver");
 			  Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Users","root","root");
 			  
-			  String email=appData.getEmail();
-			  double longitude=appData.getLongitude();
-			  double latitude=appData.getLatitude();
-			  
-			  PreparedStatement statement =  con.prepareStatement("INSERT INTO GPSDATA VALUES('"+email+"','"+longitude+"','"+latitude+"')");
-			  statement.executeUpdate();
-		  
-			  /*while(result.next())
+			  if(appData.getEmail()==null)
 			  {
-				  //ring customerInfo = result.toString();
-				  //Here "&"s are added to the return string. This is help to split the string in Android application 
-			  }*/
+				  String name=appData.getUsername();
+				  String password=appData.getPassword();
+				  
+				  PreparedStatement statement =  con.prepareStatement("SELECT * FROM User WHERE username='"+name+"' AND password='"+password+"'");
+				  ResultSet result = statement.executeQuery();
+				  
+				  if(!result.next())
+				  {
+					  output = output.concat("STATEMENT ERROR");
+				  }
+				  else
+				  {
+					  output="LoginTrue";
+				  }
+			  }
+			  else
+			  {
+				  String name=appData.getUsername();
+				  String password=appData.getPassword();
+				  String email=appData.getEmail();
+				  
+				  PreparedStatement statement =  con.prepareStatement("SELECT * FROM User WHERE username='"+name+"' OR email='"+email+"'");
+				  ResultSet result = statement.executeQuery();
+				  
+				  if(!result.next())
+				  {
+					  PreparedStatement insertStatement =  con.prepareStatement("INSERT INTO User VALUES('"+name+"','"+password+"','"+email+"')");
+					  insertStatement.executeUpdate();
+					  output="RegisterTrue";
+				  }
+				  else
+				  {
+					  output="RegisterFalse";
+				  }
+			  }
+		  	 
 		  }
 		  catch(Exception e)
 		  {
