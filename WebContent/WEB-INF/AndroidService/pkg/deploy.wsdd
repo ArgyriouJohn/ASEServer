@@ -10,10 +10,25 @@
       <parameter name="className" value="pkg.Android"/>
       <parameter name="wsdlPortType" value="Android"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <operation xmlns:operNS="http://pkg" xmlns:retNS="http://pkg" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getData" qname="operNS:getData" returnQName="retNS:getDataReturn" returnType="rtns:string" soapAction="">
+      <operation xmlns:operNS="http://pkg" xmlns:retNS="http://pkg" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getLocations" qname="operNS:getLocations" returnQName="retNS:getLocationsReturn" returnType="rtns:string" soapAction="">
         <parameter xmlns:pns="http://pkg" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
       </operation>
-      <parameter name="allowedMethods" value="getData"/>
+      <operation xmlns:operNS="http://pkg" xmlns:retNS="http://pkg" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="login" qname="operNS:login" returnQName="retNS:loginReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://pkg" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
+      <operation xmlns:operNS="http://pkg" xmlns:retNS="http://pkg" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="checkIn" qname="operNS:checkIn" returnQName="retNS:checkInReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://pkg" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
+      <operation xmlns:operNS="http://pkg" xmlns:retNS="http://pkg" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getCheckIns" qname="operNS:getCheckIns" returnQName="retNS:getCheckInsReturn" returnType="rtns:base64Binary" soapAction="">
+        <parameter xmlns:pns="http://pkg" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
+      <operation xmlns:operNS="http://pkg" xmlns:retNS="http://pkg" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getReview" qname="operNS:getReview" returnQName="retNS:getReviewReturn" returnType="rtns:base64Binary" soapAction="">
+        <parameter xmlns:pns="http://pkg" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
+      <operation xmlns:operNS="http://pkg" xmlns:retNS="http://pkg" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="review" qname="operNS:review" returnQName="retNS:reviewReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://pkg" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
+      <parameter name="allowedMethods" value="getLocations getCheckIns login getReview review checkIn"/>
 
   </service>
 </deployment>

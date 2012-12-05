@@ -4,34 +4,184 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://pkg" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="getData">
+   <element name="getLocations">
     <complexType>
      <sequence>
       <element name="data" type="xsd:base64Binary"/>
      </sequence>
     </complexType>
    </element>
-   <element name="getDataResponse">
+   <element name="getLocationsResponse">
     <complexType>
      <sequence>
-      <element name="getDataReturn" type="xsd:string"/>
+      <element name="getLocationsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="login">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loginResponse">
+    <complexType>
+     <sequence>
+      <element name="loginReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkIn">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkInResponse">
+    <complexType>
+     <sequence>
+      <element name="checkInReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCheckIns">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCheckInsResponse">
+    <complexType>
+     <sequence>
+      <element name="getCheckInsReturn" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getReview">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getReviewResponse">
+    <complexType>
+     <sequence>
+      <element name="getReviewReturn" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="review">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="reviewResponse">
+    <complexType>
+     <sequence>
+      <element name="reviewReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
   </schema>
  </wsdl:types>
 
-   <wsdl:message name="getDataResponse">
+   <wsdl:message name="reviewResponse">
 
-      <wsdl:part element="impl:getDataResponse" name="parameters">
+      <wsdl:part element="impl:reviewResponse" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="getDataRequest">
+   <wsdl:message name="getReviewRequest">
 
-      <wsdl:part element="impl:getData" name="parameters">
+      <wsdl:part element="impl:getReview" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkInRequest">
+
+      <wsdl:part element="impl:checkIn" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="reviewRequest">
+
+      <wsdl:part element="impl:review" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCheckInsRequest">
+
+      <wsdl:part element="impl:getCheckIns" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCheckInsResponse">
+
+      <wsdl:part element="impl:getCheckInsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLocationsRequest">
+
+      <wsdl:part element="impl:getLocations" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkInResponse">
+
+      <wsdl:part element="impl:checkInResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLocationsResponse">
+
+      <wsdl:part element="impl:getLocationsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getReviewResponse">
+
+      <wsdl:part element="impl:getReviewResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginRequest">
+
+      <wsdl:part element="impl:login" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginResponse">
+
+      <wsdl:part element="impl:loginResponse" name="parameters">
 
       </wsdl:part>
 
@@ -39,13 +189,73 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    <wsdl:portType name="Android">
 
-      <wsdl:operation name="getData">
+      <wsdl:operation name="getLocations">
 
-         <wsdl:input message="impl:getDataRequest" name="getDataRequest">
+         <wsdl:input message="impl:getLocationsRequest" name="getLocationsRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:getDataResponse" name="getDataResponse">
+         <wsdl:output message="impl:getLocationsResponse" name="getLocationsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login">
+
+         <wsdl:input message="impl:loginRequest" name="loginRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:loginResponse" name="loginResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkIn">
+
+         <wsdl:input message="impl:checkInRequest" name="checkInRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:checkInResponse" name="checkInResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCheckIns">
+
+         <wsdl:input message="impl:getCheckInsRequest" name="getCheckInsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCheckInsResponse" name="getCheckInsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getReview">
+
+         <wsdl:input message="impl:getReviewRequest" name="getReviewRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getReviewResponse" name="getReviewResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="review">
+
+         <wsdl:input message="impl:reviewRequest" name="reviewRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:reviewResponse" name="reviewResponse">
 
        </wsdl:output>
 
@@ -57,17 +267,107 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-      <wsdl:operation name="getData">
+      <wsdl:operation name="getLocations">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="getDataRequest">
+         <wsdl:input name="getLocationsRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="getDataResponse">
+         <wsdl:output name="getLocationsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="loginRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="loginResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkIn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkInRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkInResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCheckIns">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCheckInsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCheckInsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getReview">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getReviewRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getReviewResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="review">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="reviewRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="reviewResponse">
 
             <wsdlsoap:body use="literal"/>
 

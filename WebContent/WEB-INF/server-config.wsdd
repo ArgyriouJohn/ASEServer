@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -23,10 +23,25 @@
  <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
  <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
  <ns1:service name="Android" provider="java:RPC" style="wrapped" use="literal">
-  <ns2:operation name="getData" qname="ns1:getData" returnQName="ns1:getDataReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://pkg" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+  <ns2:operation name="getLocations" qname="ns1:getLocations" returnQName="ns1:getLocationsReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://pkg" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
    <ns2:parameter qname="ns1:data" type="xsd:base64Binary"/>
   </ns2:operation>
-  <ns1:parameter name="allowedMethods" value="getData"/>
+  <ns1:operation name="login" qname="ns2:login" returnQName="ns2:loginReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://pkg" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:data" type="xsd:base64Binary"/>
+  </ns1:operation>
+  <ns1:operation name="checkIn" qname="ns3:checkIn" returnQName="ns3:checkInReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://pkg" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:data" type="xsd:base64Binary"/>
+  </ns1:operation>
+  <ns1:operation name="getCheckIns" qname="ns4:getCheckIns" returnQName="ns4:getCheckInsReturn" returnType="xsd:base64Binary" soapAction="" xmlns:ns4="http://pkg" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:data" type="xsd:base64Binary"/>
+  </ns1:operation>
+  <ns1:operation name="getReview" qname="ns5:getReview" returnQName="ns5:getReviewReturn" returnType="xsd:base64Binary" soapAction="" xmlns:ns5="http://pkg" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:data" type="xsd:base64Binary"/>
+  </ns1:operation>
+  <ns1:operation name="review" qname="ns6:review" returnQName="ns6:reviewReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://pkg" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:data" type="xsd:base64Binary"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getLocations getCheckIns login getReview review checkIn"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="Android"/>
   <ns1:parameter name="className" value="pkg.Android"/>
