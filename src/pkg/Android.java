@@ -32,7 +32,7 @@ public class Android
 		  String output="WS : ";
 		  try
 		  {
-			  UserAuth appData = new UserAuth("","","");
+			  UserAuth appData = new UserAuth("","","","","");
 			  try
 			  { 
 				  appData = (UserAuth) new ObjectInputStream(new ByteArrayInputStream(data)).readObject();
@@ -67,13 +67,15 @@ public class Android
 				  String name=appData.getUsername();
 				  String password=appData.getPassword();
 				  String email=appData.getEmail();
+				  String firstName = "";
+				  String lastName = "";
 				  
 				  PreparedStatement statement =  con.prepareStatement("SELECT * FROM User WHERE username='"+name+"' OR email='"+email+"'");
 				  ResultSet result = statement.executeQuery();
 				  
 				  if(!result.next())
 				  {
-					  PreparedStatement insertStatement =  con.prepareStatement("INSERT INTO User VALUES('"+name+"','"+password+"','"+email+"')");
+					  PreparedStatement insertStatement =  con.prepareStatement("INSERT INTO User VALUES('"+name+"','"+password+"','"+email+"','"+firstName+ "','" +lastName+"')");
 					  insertStatement.executeUpdate();
 					  output="RegisterTrue";
 				  }
@@ -90,6 +92,71 @@ public class Android
 		   
 		  return output;
 	}
+	
+	public String update(byte[] data)
+	{
+		  String output="WS : ";
+		  try
+		  {
+			  UserAuth appData = new UserAuth("","","","","");
+			  try
+			  { 
+				  appData = (UserAuth) new ObjectInputStream(new ByteArrayInputStream(data)).readObject();
+			  }
+			  catch(Exception e)
+			  {
+				  output = output.concat("CAST error "+e.toString());
+			  }
+			  
+			  Class.forName("com.mysql.jdbc.Driver");
+			  Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Users","root","root");
+			  
+			  if(appData.getEmail()==null)
+			  {
+				  String name=appData.getUsername();
+				  String password=appData.getPassword();
+				  
+				  PreparedStatement statement =  con.prepareStatement("SELECT * FROM User WHERE username='"+name+"' AND password='"+password+"'");
+				  ResultSet result = statement.executeQuery();
+				  
+				  if(!result.next())
+				  {
+					  output = output.concat("STATEMENT ERROR");
+				  }
+				  else
+				  {
+					  output="LoginTrue";
+				  }
+			  }
+			  else
+			  {
+				  String name=appData.getUsername();
+				  String firstName = appData.getFirstName();
+				  String lastName = appData.getLastName();
+				  
+				  PreparedStatement statement =  con.prepareStatement("SELECT * FROM User WHERE username='"+name+"'");
+				  ResultSet result = statement.executeQuery();
+				  
+				  if(!result.next())
+				  {
+					  PreparedStatement insertStatement =  con.prepareStatement("UPDATE User SET firstName='"+firstName+"', "+"lastName='"+lastName+"', "
+							  +"WHERE username='"+name+"'");
+					  insertStatement.executeUpdate();
+					  output="ProfileUpdateTrue";
+				  }
+				  else
+				  {
+					  output="ProfileUpdateFalse";
+				  }
+			  }
+		  }
+		  catch(Exception e)
+		  {
+			  output = output.concat("GENERAL error "+e.toString());
+		  }
+		   
+		  return output;
+	}	
 	
 	@Resource(name="jdbc/Users")
 	public String getLocations(byte[] data)
@@ -212,7 +279,7 @@ public class Android
 		  String output="WS : ";
 		  try
 		  {
-			  Review review = new Review("","","",0);
+			  Review review = new Review("","","",0,0,0);
 			  try
 			  { 
 				  review = (Review) new ObjectInputStream(new ByteArrayInputStream(data)).readObject();
@@ -229,10 +296,24 @@ public class Android
 			  String location = review.getLocation();
 			  String reviewText = review.getReviewText();
 			  int rating = review.getRating();
+			  int likes = review.getLikes();
+			  int dislikes = review.getDislikes();
 			  
-			  PreparedStatement insertStatement =  con.prepareStatement("INSERT INTO Reviews (username,location,review,rating) VALUES('"+name+"','"+location+"','"+reviewText+"','"+rating+"')");
-			  insertStatement.executeUpdate();
-			  output="ReviewUpdateTrue";
+			  PreparedStatement statement =  con.prepareStatement("SELECT * FROM Reviews WHERE location='"+location+"' AND username='"+name+"'");
+			  ResultSet result = statement.executeQuery();
+			  
+			  if(result.next())
+			  {
+				  PreparedStatement insertStatement =  con.prepareStatement("UPDATE Reviews SET likes='"+likes+"', dislikes='"+dislikes+"' ,review='"+reviewText+"' ,rating='"+rating+"' WHERE location='"+location+"' AND username='"+name+"'");
+				  insertStatement.executeUpdate();
+				  output="ReviewUpdateTrue , updated review!";
+			  }
+			  else
+			  {
+				  PreparedStatement insertStatement =  con.prepareStatement("INSERT INTO Reviews (username,location,review,rating,likes,dislikes) VALUES('"+name+"','"+location+"','"+reviewText+"','"+rating+"','"+likes+"','"+dislikes+"')");
+				  insertStatement.executeUpdate();
+				  output="ReviewUpdateTrue , inserted new review!";
+			  }			  
 		  }
 		  catch(Exception e)
 		  {
@@ -248,7 +329,7 @@ public class Android
 		  byte[] byteData = new byte[1];
 		  try
 		  {
-			  Review review = new Review("","","",0);
+			  Review review = new Review("","","",0,0,0);
 			  try
 			  { 
 				  review = (Review) new ObjectInputStream(new ByteArrayInputStream(data)).readObject();
@@ -265,7 +346,7 @@ public class Android
 			  
 			  while (result.next())
 			  {
-				  review = new Review(result.getString("username"),result.getString("location"),result.getString("review"),result.getInt("rating"));
+				  review = new Review(result.getString("username"),result.getString("location"),result.getString("review"),result.getInt("rating"),result.getInt("likes"),result.getInt("dislikes"));
 				  reviews.add(review);
 			  }
 		   }
