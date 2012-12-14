@@ -74,6 +74,20 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="retrieveProfile">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="retrieveProfileResponse">
+    <complexType>
+     <sequence>
+      <element name="retrieveProfileReturn" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
    <element name="getCheckIns">
     <complexType>
      <sequence>
@@ -127,9 +141,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="getLocationsRequest">
+   <wsdl:message name="retrieveProfileRequest">
 
-      <wsdl:part element="impl:getLocations" name="parameters">
+      <wsdl:part element="impl:retrieveProfile" name="parameters">
 
       </wsdl:part>
 
@@ -138,6 +152,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="getCheckInsResponse">
 
       <wsdl:part element="impl:getCheckInsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLocationsRequest">
+
+      <wsdl:part element="impl:getLocations" name="parameters">
 
       </wsdl:part>
 
@@ -247,6 +269,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="retrieveProfileResponse">
+
+      <wsdl:part element="impl:retrieveProfileResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:portType name="Android">
 
       <wsdl:operation name="delete">
@@ -304,6 +334,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:checkInResponse" name="checkInResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveProfile">
+
+         <wsdl:input message="impl:retrieveProfileRequest" name="retrieveProfileRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:retrieveProfileResponse" name="retrieveProfileResponse">
 
        </wsdl:output>
 
@@ -441,6 +483,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="retrieveProfile">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="retrieveProfileRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="retrieveProfileResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="getCheckIns">
 
          <wsdlsoap:operation soapAction=""/>
@@ -501,7 +561,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdl:port binding="impl:AndroidSoapBinding" name="Android">
 
-         <wsdlsoap:address location="http://localhost/ASEServer/services/Android"/>
+         <wsdlsoap:address location="http://localhost:8080/ASEServer/services/Android"/>
 
       </wsdl:port>
 

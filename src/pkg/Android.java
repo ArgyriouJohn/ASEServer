@@ -19,6 +19,7 @@ import com.example.ase_map.CheckIn;
 import com.example.ase_map.LocShare;
 import com.example.ase_map.Review;
 import com.example.ase_map.UserAuth;
+import com.mysql.jdbc.Blob;
 
 public class Android 
 {
@@ -68,6 +69,7 @@ public class Android
 				  String firstName = "";
 				  String lastName = "";
 				  String gender = "";
+				  Object picture = null;
 				  int day = 0;
 				  int month = 0;
 				  int year = 0;
@@ -78,7 +80,7 @@ public class Android
 				  if(!result.next())
 				  {
 					  PreparedStatement insertStatement =  con.prepareStatement("INSERT INTO User VALUES('"+name+"','"+password+"','"+email+"','"+firstName+ "','" +lastName+"','"
-				  +gender+"','"+day+"','"+month+"','"+year+"')");
+				  +gender+"','"+day+"','"+month+"','"+year+"','"+picture+"')");
 					  insertStatement.executeUpdate();
 					  output="RegisterTrue";
 				  }
@@ -94,6 +96,53 @@ public class Android
 		  }
 		   
 		  return output;
+	}
+	
+	@Resource(name="jdbc/Users")
+	public byte[] retrieveProfile(byte[] data)
+	{
+		  byte[] byteData = new byte[1];
+		  UserAuth userData = new UserAuth("");
+		  try
+		  {
+			  try
+			  { 
+				  userData = (UserAuth) new ObjectInputStream(new ByteArrayInputStream(data)).readObject();
+			  }
+			  catch(Exception e){e.printStackTrace();}
+			  
+			  Class.forName("com.mysql.jdbc.Driver");
+			  Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Users","root","root");
+			  
+			  String nickname = userData.getUsername();
+			  
+			  PreparedStatement statement =  con.prepareStatement("SELECT * FROM User WHERE username='"+nickname+"'");
+			  ResultSet result = statement.executeQuery();
+			  
+			  if(result.next())
+			  {
+				  userData = new UserAuth(result.getString("username"),result.getString("firstName"),result.getString("lastName"),result.getString("gender"),result.getInt("day"),result.getInt("month"),result.getInt("year"),result.getString("IMAGE"));
+			  }
+			  else
+			  {
+				  userData = new UserAuth("DebugUserException","fousekis","matsablokos","male",1,1,1,null); 
+			  }
+		   }
+		  catch(Exception e){e.printStackTrace();}
+		  	  
+		  ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		  ObjectOutput out = null;
+		  try 
+		  {
+		    out = new ObjectOutputStream(bos);   
+		    out.writeObject(userData);
+		    byteData= bos.toByteArray();
+		    out.close();
+		    bos.close();
+		  } 
+		  catch (IOException e) {e.printStackTrace(); }
+
+		return byteData;
 	}
 	
 	public String update(byte[] data)
@@ -122,6 +171,7 @@ public class Android
 				  int day = updateData.getDay();
 				  int month = updateData.getMonth();
 				  int year = updateData.getYear();
+				  String picture = updateData.getPicture();
 				  
 				  PreparedStatement statement =  con.prepareStatement("SELECT * FROM User WHERE username='"+name+"'");
 				  ResultSet result = statement.executeQuery();
@@ -129,7 +179,8 @@ public class Android
 				  if(result.next())
 				  {
 					  PreparedStatement insertStatement =  con.prepareStatement("UPDATE User SET firstName='"+firstName+"', "+"lastName='"+lastName+"', "
-				  +"gender='"+gender+"', "+"day='"+day+"', "+"month='"+month+"', "+"year='"+year+"'"+"WHERE username='"+name+"'");
+					  +"gender='"+gender+"', "+"day='"+day+"', "+"month='"+month+"', "+"year='"+year+"', "+"IMAGE='"+picture+"' "+"WHERE username='"+name+"'");
+					  
 					  insertStatement.executeUpdate();
 					  output="ProfileUpdateTrue";
 				  }
@@ -145,6 +196,7 @@ public class Android
 		   
 		  return output;
 	}
+	
 	
 	public String delete(byte[] data)
 	{
@@ -277,9 +329,16 @@ public class Android
 			  Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Users","root","root");
 			  
 			  String location = chInData.getLocation();
+			  String nickname = chInData.getUsername();
+			  ResultSet result = null;
 			  
+			  if(chInData.getUsername()==null) {
 			  PreparedStatement statement =  con.prepareStatement("SELECT * FROM CheckIn WHERE location='"+location+"'");
-			  ResultSet result = statement.executeQuery();
+			  result = statement.executeQuery();
+			  } else {
+				  PreparedStatement statement =  con.prepareStatement("SELECT * FROM CheckIn WHERE username='"+nickname+"'");
+				  result = statement.executeQuery();
+			  }
 			  
 			  while (result.next())
 			  {
@@ -371,9 +430,16 @@ public class Android
 			  Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Users","root","root");
 			  
 			  String location = review.getLocation();
+			  String nickname = review.getUsername();
+			  ResultSet result = null;
 			  
-			  PreparedStatement statement =  con.prepareStatement("SELECT * FROM Reviews WHERE location='"+location+"'");
-			  ResultSet result = statement.executeQuery();
+			  if(review.getUsername()==null) {
+				  PreparedStatement statement =  con.prepareStatement("SELECT * FROM Reviews WHERE location='"+location+"'");
+			  result = statement.executeQuery();
+			  } else {
+				  PreparedStatement statement =  con.prepareStatement("SELECT * FROM Reviews WHERE username='"+nickname+"'");
+				  result = statement.executeQuery();
+			  }
 			  
 			  while (result.next())
 			  {

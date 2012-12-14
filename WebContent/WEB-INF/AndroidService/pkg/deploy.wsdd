@@ -25,6 +25,9 @@
       <operation xmlns:operNS="http://pkg" xmlns:retNS="http://pkg" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="checkIn" qname="operNS:checkIn" returnQName="retNS:checkInReturn" returnType="rtns:string" soapAction="">
         <parameter xmlns:pns="http://pkg" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
       </operation>
+      <operation xmlns:operNS="http://pkg" xmlns:retNS="http://pkg" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="retrieveProfile" qname="operNS:retrieveProfile" returnQName="retNS:retrieveProfileReturn" returnType="rtns:base64Binary" soapAction="">
+        <parameter xmlns:pns="http://pkg" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
       <operation xmlns:operNS="http://pkg" xmlns:retNS="http://pkg" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getCheckIns" qname="operNS:getCheckIns" returnQName="retNS:getCheckInsReturn" returnType="rtns:base64Binary" soapAction="">
         <parameter xmlns:pns="http://pkg" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
       </operation>
@@ -34,7 +37,7 @@
       <operation xmlns:operNS="http://pkg" xmlns:retNS="http://pkg" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getReview" qname="operNS:getReview" returnQName="retNS:getReviewReturn" returnType="rtns:base64Binary" soapAction="">
         <parameter xmlns:pns="http://pkg" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
       </operation>
-      <parameter name="allowedMethods" value="update getLocations getCheckIns delete login getReview review checkIn"/>
+      <parameter name="allowedMethods" value="update getLocations retrieveProfile getCheckIns delete login getReview review checkIn"/>
 
   </service>
 </deployment>

@@ -1,7 +1,6 @@
 package com.example.ase_map;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 public class UserAuth implements Serializable {
 
@@ -14,6 +13,7 @@ public class UserAuth implements Serializable {
 	private int year;
 	private int month;
 	private int day;	
+	private String profilePic;
 	
 	public UserAuth() {				
 	}
@@ -31,11 +31,24 @@ public class UserAuth implements Serializable {
 		this.password = password;
 	}
 	
-	public UserAuth(String name) {
-		this.username = name;
+	public UserAuth(String username) {
+		this.username = username;
 	}
 	
-	public UserAuth(String username, String first, String last, String gen, int d, int m, int y) {
+	public UserAuth(String username, String first, String last, String gen, int d, int m, int y,String profilePic) 
+	{
+		this.username = username;
+		this.firstName = first;
+		this.lastName = last;
+		this.gender = gen;
+		this.year = d;
+		this.month = m;
+		this.day = y;
+		this.profilePic = profilePic;
+	}
+	
+	public UserAuth(String username, String first, String last, String gen, int d, int m, int y) 
+	{
 		this.username = username;
 		this.firstName = first;
 		this.lastName = last;
@@ -79,6 +92,10 @@ public class UserAuth implements Serializable {
 	
 	public int getDay() {
 		return day;
+	}
+	
+	public String getPicture() {
+		return profilePic;
 	}
 
 }
