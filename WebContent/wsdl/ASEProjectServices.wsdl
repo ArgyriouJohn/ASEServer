@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://server.aseserver.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://server.aseserver.com" xmlns:intf="http://server.aseserver.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://server.aseserver.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="deleteProfile">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteProfileResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteProfileReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateProfile">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateProfileResponse">
+    <complexType>
+     <sequence>
+      <element name="updateProfileReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loginOrRegister">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loginOrRegisterResponse">
+    <complexType>
+     <sequence>
+      <element name="loginOrRegisterReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="retrieveProfile">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="retrieveProfileResponse">
+    <complexType>
+     <sequence>
+      <element name="retrieveProfileReturn" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addVisibility">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addVisibilityResponse">
+    <complexType>
+     <sequence>
+      <element name="addVisibilityReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addLocations">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addLocationsResponse">
+    <complexType>
+     <sequence>
+      <element name="addLocationsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCheckIn">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCheckInResponse">
+    <complexType>
+     <sequence>
+      <element name="addCheckInReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCheckIns">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCheckInsResponse">
+    <complexType>
+     <sequence>
+      <element name="getCheckInsReturn" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addReview">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addReviewResponse">
+    <complexType>
+     <sequence>
+      <element name="addReviewReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getReviews">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getReviewsResponse">
+    <complexType>
+     <sequence>
+      <element name="getReviewsReturn" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="updateProfileRequest">
+
+      <wsdl:part element="impl:updateProfile" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveProfileResponse">
+
+      <wsdl:part element="impl:retrieveProfileResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateProfileResponse">
+
+      <wsdl:part element="impl:updateProfileResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addReviewResponse">
+
+      <wsdl:part element="impl:addReviewResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCheckInsRequest">
+
+      <wsdl:part element="impl:getCheckIns" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getReviewsResponse">
+
+      <wsdl:part element="impl:getReviewsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginOrRegisterRequest">
+
+      <wsdl:part element="impl:loginOrRegister" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addVisibilityResponse">
+
+      <wsdl:part element="impl:addVisibilityResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addLocationsRequest">
+
+      <wsdl:part element="impl:addLocations" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCheckInRequest">
+
+      <wsdl:part element="impl:addCheckIn" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteProfileResponse">
+
+      <wsdl:part element="impl:deleteProfileResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addVisibilityRequest">
+
+      <wsdl:part element="impl:addVisibility" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteProfileRequest">
+
+      <wsdl:part element="impl:deleteProfile" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginOrRegisterResponse">
+
+      <wsdl:part element="impl:loginOrRegisterResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getReviewsRequest">
+
+      <wsdl:part element="impl:getReviews" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCheckInsResponse">
+
+      <wsdl:part element="impl:getCheckInsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCheckInResponse">
+
+      <wsdl:part element="impl:addCheckInResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveProfileRequest">
+
+      <wsdl:part element="impl:retrieveProfile" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addLocationsResponse">
+
+      <wsdl:part element="impl:addLocationsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addReviewRequest">
+
+      <wsdl:part element="impl:addReview" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ASEProjectServices">
+
+      <wsdl:operation name="deleteProfile">
+
+         <wsdl:input message="impl:deleteProfileRequest" name="deleteProfileRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteProfileResponse" name="deleteProfileResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateProfile">
+
+         <wsdl:input message="impl:updateProfileRequest" name="updateProfileRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateProfileResponse" name="updateProfileResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="loginOrRegister">
+
+         <wsdl:input message="impl:loginOrRegisterRequest" name="loginOrRegisterRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:loginOrRegisterResponse" name="loginOrRegisterResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveProfile">
+
+         <wsdl:input message="impl:retrieveProfileRequest" name="retrieveProfileRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:retrieveProfileResponse" name="retrieveProfileResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addVisibility">
+
+         <wsdl:input message="impl:addVisibilityRequest" name="addVisibilityRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addVisibilityResponse" name="addVisibilityResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addLocations">
+
+         <wsdl:input message="impl:addLocationsRequest" name="addLocationsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addLocationsResponse" name="addLocationsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addCheckIn">
+
+         <wsdl:input message="impl:addCheckInRequest" name="addCheckInRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addCheckInResponse" name="addCheckInResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCheckIns">
+
+         <wsdl:input message="impl:getCheckInsRequest" name="getCheckInsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCheckInsResponse" name="getCheckInsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addReview">
+
+         <wsdl:input message="impl:addReviewRequest" name="addReviewRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addReviewResponse" name="addReviewResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getReviews">
+
+         <wsdl:input message="impl:getReviewsRequest" name="getReviewsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getReviewsResponse" name="getReviewsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ASEProjectServicesSoapBinding" type="impl:ASEProjectServices">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="deleteProfile">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteProfileRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteProfileResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateProfile">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateProfileRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateProfileResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="loginOrRegister">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="loginOrRegisterRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="loginOrRegisterResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveProfile">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="retrieveProfileRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="retrieveProfileResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addVisibility">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addVisibilityRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addVisibilityResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addLocations">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addLocationsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addLocationsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addCheckIn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addCheckInRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addCheckInResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCheckIns">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCheckInsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCheckInsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addReview">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addReviewRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addReviewResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getReviews">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getReviewsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getReviewsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ASEProjectServicesService">
+
+      <wsdl:port binding="impl:ASEProjectServicesSoapBinding" name="ASEProjectServices">
+
+         <wsdlsoap:address location="http://localhost:8080/ASEServer/services/ASEProjectServices"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

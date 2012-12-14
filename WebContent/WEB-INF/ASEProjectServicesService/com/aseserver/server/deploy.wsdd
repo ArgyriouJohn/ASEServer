@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ASEProjectServicesService WSDL service -->
+
+  <service name="ASEProjectServices" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://server.aseserver.com"/>
+      <parameter name="wsdlServiceElement" value="ASEProjectServicesService"/>
+      <parameter name="schemaQualified" value="http://server.aseserver.com"/>
+      <parameter name="wsdlServicePort" value="ASEProjectServices"/>
+      <parameter name="className" value="com.aseserver.server.ASEProjectServices"/>
+      <parameter name="wsdlPortType" value="ASEProjectServices"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://server.aseserver.com" xmlns:retNS="http://server.aseserver.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="deleteProfile" qname="operNS:deleteProfile" returnQName="retNS:deleteProfileReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://server.aseserver.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
+      <operation xmlns:operNS="http://server.aseserver.com" xmlns:retNS="http://server.aseserver.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="updateProfile" qname="operNS:updateProfile" returnQName="retNS:updateProfileReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://server.aseserver.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
+      <operation xmlns:operNS="http://server.aseserver.com" xmlns:retNS="http://server.aseserver.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="loginOrRegister" qname="operNS:loginOrRegister" returnQName="retNS:loginOrRegisterReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://server.aseserver.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
+      <operation xmlns:operNS="http://server.aseserver.com" xmlns:retNS="http://server.aseserver.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="retrieveProfile" qname="operNS:retrieveProfile" returnQName="retNS:retrieveProfileReturn" returnType="rtns:base64Binary" soapAction="">
+        <parameter xmlns:pns="http://server.aseserver.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
+      <operation xmlns:operNS="http://server.aseserver.com" xmlns:retNS="http://server.aseserver.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addVisibility" qname="operNS:addVisibility" returnQName="retNS:addVisibilityReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://server.aseserver.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
+      <operation xmlns:operNS="http://server.aseserver.com" xmlns:retNS="http://server.aseserver.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addLocations" qname="operNS:addLocations" returnQName="retNS:addLocationsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://server.aseserver.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
+      <operation xmlns:operNS="http://server.aseserver.com" xmlns:retNS="http://server.aseserver.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addCheckIn" qname="operNS:addCheckIn" returnQName="retNS:addCheckInReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://server.aseserver.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
+      <operation xmlns:operNS="http://server.aseserver.com" xmlns:retNS="http://server.aseserver.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getCheckIns" qname="operNS:getCheckIns" returnQName="retNS:getCheckInsReturn" returnType="rtns:base64Binary" soapAction="">
+        <parameter xmlns:pns="http://server.aseserver.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
+      <operation xmlns:operNS="http://server.aseserver.com" xmlns:retNS="http://server.aseserver.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addReview" qname="operNS:addReview" returnQName="retNS:addReviewReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://server.aseserver.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
+      <operation xmlns:operNS="http://server.aseserver.com" xmlns:retNS="http://server.aseserver.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getReviews" qname="operNS:getReviews" returnQName="retNS:getReviewsReturn" returnType="rtns:base64Binary" soapAction="">
+        <parameter xmlns:pns="http://server.aseserver.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:data" type="tns:base64Binary"/>
+      </operation>
+      <parameter name="allowedMethods" value="addCheckIn addLocations retrieveProfile loginOrRegister getReviews getCheckIns deleteProfile addReview updateProfile addVisibility"/>
+
+  </service>
+</deployment>
