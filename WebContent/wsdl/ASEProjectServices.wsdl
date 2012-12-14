@@ -144,8 +144,30 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="deleteCheckIn">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteCheckInResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteCheckInReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
   </schema>
  </wsdl:types>
+
+   <wsdl:message name="deleteCheckInResponse">
+
+      <wsdl:part element="impl:deleteCheckInResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
 
    <wsdl:message name="updateProfileRequest">
 
@@ -238,6 +260,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="addVisibilityRequest">
 
       <wsdl:part element="impl:addVisibility" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteCheckInRequest">
+
+      <wsdl:part element="impl:deleteCheckIn" name="parameters">
 
       </wsdl:part>
 
@@ -429,6 +459,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="deleteCheckIn">
+
+         <wsdl:input message="impl:deleteCheckInRequest" name="deleteCheckInRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteCheckInResponse" name="deleteCheckInResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
    </wsdl:portType>
 
    <wsdl:binding name="ASEProjectServicesSoapBinding" type="impl:ASEProjectServices">
@@ -608,6 +650,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="getReviewsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteCheckIn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteCheckInRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteCheckInResponse">
 
             <wsdlsoap:body use="literal"/>
 

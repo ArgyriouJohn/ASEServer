@@ -30,7 +30,7 @@ public class ASEProjectServices
 		  String output="WS : ";
 		  try
 		  {
-			  UserAuth appData = new UserAuth("","","","","");
+			  UserAuth appData = new UserAuth("","","");
 			  try
 			  { 
 				  appData = (UserAuth) new ObjectInputStream(new ByteArrayInputStream(data)).readObject();
@@ -68,7 +68,8 @@ public class ASEProjectServices
 				  String firstName = "";
 				  String lastName = "";
 				  String gender = "";
-				  Object picture = null;
+				  String picture = "";
+				  int isInvis = 0;
 				  int day = 0;
 				  int month = 0;
 				  int year = 0;
@@ -79,7 +80,7 @@ public class ASEProjectServices
 				  if(!result.next())
 				  {
 					  PreparedStatement insertStatement =  con.prepareStatement("INSERT INTO User VALUES('"+name+"','"+password+"','"+email+"','"+firstName+ "','" +lastName+"','"
-				  +gender+"','"+day+"','"+month+"','"+year+"','"+picture+"')");
+				  +gender+"','"+day+"','"+month+"','"+year+"','"+picture+"','"+isInvis+"')");
 					  insertStatement.executeUpdate();
 					  output="RegisterTrue";
 				  }
@@ -273,6 +274,51 @@ public class ASEProjectServices
 				  else
 				  {
 					  output="DeleteFalse";
+				  }
+		  }
+		  catch(Exception e)
+		  {
+			  output = output.concat("GENERAL error "+e.toString());
+		  }
+		   
+		  return output;
+	}
+	
+	public String deleteCheckIn(byte[] data)
+	{
+		  String output="WS : ";
+		  try
+		  
+		  {
+			  Timestamp dat = null;
+			  CheckIn checkInData = new CheckIn("","",dat);
+			  try
+			  { 
+				  checkInData = (CheckIn) new ObjectInputStream(new ByteArrayInputStream(data)).readObject();
+			  }
+			  catch(Exception e)
+			  {
+				  output = output.concat("CAST error "+e.toString());
+			  }
+			  
+			  Class.forName("com.mysql.jdbc.Driver");
+			  Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Users","root","root");
+			  
+				  String name = checkInData.getUsername();				  
+				  dat = checkInData.getTimeDate();
+				  
+				  PreparedStatement statement =  con.prepareStatement("SELECT * FROM User WHERE username='"+name+"'");
+				  ResultSet result = statement.executeQuery();
+				  
+				  if(result.next())
+				  {
+					  PreparedStatement insertStatement =  con.prepareStatement("DELETE FROM CheckIn where username='"+name+"' AND date='"+dat+"'");
+					  insertStatement.executeUpdate();
+					  output="DeleteCheckInTrue";
+				  }
+				  else
+				  {
+					  output="DeleteCheckInFalse";
 				  }
 		  }
 		  catch(Exception e)

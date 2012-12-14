@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -53,7 +53,10 @@
   <ns1:operation name="getReviews" qname="ns10:getReviews" returnQName="ns10:getReviewsReturn" returnType="xsd:base64Binary" soapAction="" xmlns:ns10="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns10:data" type="xsd:base64Binary"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="addCheckIn addLocations retrieveProfile loginOrRegister getReviews getCheckIns deleteProfile addReview updateProfile addVisibility"/>
+  <ns1:operation name="deleteCheckIn" qname="ns11:deleteCheckIn" returnQName="ns11:deleteCheckInReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns11:data" type="xsd:base64Binary"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="addCheckIn addLocations retrieveProfile loginOrRegister getReviews getCheckIns deleteProfile addReview updateProfile deleteCheckIn addVisibility"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="ASEProjectServices"/>
   <ns1:parameter name="className" value="com.aseserver.server.ASEProjectServices"/>

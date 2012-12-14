@@ -50,7 +50,10 @@
       <operation name="getReviews" qname="operNS:getReviews" xmlns:operNS="http://server.aseserver.com" returnQName="retNS:getReviewsReturn" xmlns:retNS="http://server.aseserver.com" returnType="rtns:base64Binary" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:data" xmlns:pns="http://server.aseserver.com" type="tns:base64Binary" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <parameter name="allowedMethods" value="addCheckIn addLocations retrieveProfile loginOrRegister getReviews getCheckIns deleteProfile addReview updateProfile addVisibility"/>
+      <operation name="deleteCheckIn" qname="operNS:deleteCheckIn" xmlns:operNS="http://server.aseserver.com" returnQName="retNS:deleteCheckInReturn" xmlns:retNS="http://server.aseserver.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:data" xmlns:pns="http://server.aseserver.com" type="tns:base64Binary" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="addCheckIn addLocations retrieveProfile loginOrRegister getReviews getCheckIns deleteProfile addReview updateProfile deleteCheckIn addVisibility"/>
 
   </service>
 </deployment>
