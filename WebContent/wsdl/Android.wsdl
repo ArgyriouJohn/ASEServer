@@ -4,6 +4,20 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://pkg" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="delete">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
    <element name="update">
     <complexType>
      <sequence>
@@ -15,6 +29,20 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="updateReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="login">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loginResponse">
+    <complexType>
+     <sequence>
+      <element name="loginReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -43,20 +71,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="checkInReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="login">
-    <complexType>
-     <sequence>
-      <element name="data" type="xsd:base64Binary"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="loginResponse">
-    <complexType>
-     <sequence>
-      <element name="loginReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -129,6 +143,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="deleteRequest">
+
+      <wsdl:part element="impl:delete" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:message name="getReviewResponse">
 
       <wsdl:part element="impl:getReviewResponse" name="parameters">
@@ -153,6 +175,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="reviewResponse">
+
+      <wsdl:part element="impl:reviewResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:message name="updateRequest">
 
       <wsdl:part element="impl:update" name="parameters">
@@ -169,14 +199,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="reviewResponse">
-
-      <wsdl:part element="impl:reviewResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="getCheckInsRequest">
 
       <wsdl:part element="impl:getCheckIns" name="parameters">
@@ -188,6 +210,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="checkInResponse">
 
       <wsdl:part element="impl:checkInResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteResponse">
+
+      <wsdl:part element="impl:deleteResponse" name="parameters">
 
       </wsdl:part>
 
@@ -219,6 +249,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    <wsdl:portType name="Android">
 
+      <wsdl:operation name="delete">
+
+         <wsdl:input message="impl:deleteRequest" name="deleteRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteResponse" name="deleteResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="update">
 
          <wsdl:input message="impl:updateRequest" name="updateRequest">
@@ -226,6 +268,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:updateResponse" name="updateResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login">
+
+         <wsdl:input message="impl:loginRequest" name="loginRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:loginResponse" name="loginResponse">
 
        </wsdl:output>
 
@@ -250,18 +304,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:checkInResponse" name="checkInResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="login">
-
-         <wsdl:input message="impl:loginRequest" name="loginRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:loginResponse" name="loginResponse">
 
        </wsdl:output>
 
@@ -309,6 +351,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
+      <wsdl:operation name="delete">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="update">
 
          <wsdlsoap:operation soapAction=""/>
@@ -320,6 +380,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="updateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="loginRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="loginResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -356,24 +434,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="checkInResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="login">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="loginRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="loginResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -441,7 +501,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdl:port binding="impl:AndroidSoapBinding" name="Android">
 
-         <wsdlsoap:address location="http://localhost:8180/ASEServer/services/Android"/>
+         <wsdlsoap:address location="http://localhost/ASEServer/services/Android"/>
 
       </wsdl:port>
 

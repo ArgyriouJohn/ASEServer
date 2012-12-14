@@ -3,16 +3,14 @@ package pkg;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.sql.Connection;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
@@ -69,13 +67,18 @@ public class Android
 				  String email=appData.getEmail();
 				  String firstName = "";
 				  String lastName = "";
+				  String gender = "";
+				  int day = 0;
+				  int month = 0;
+				  int year = 0;
 				  
 				  PreparedStatement statement =  con.prepareStatement("SELECT * FROM User WHERE username='"+name+"' OR email='"+email+"'");
 				  ResultSet result = statement.executeQuery();
 				  
 				  if(!result.next())
 				  {
-					  PreparedStatement insertStatement =  con.prepareStatement("INSERT INTO User VALUES('"+name+"','"+password+"','"+email+"','"+firstName+ "','" +lastName+"')");
+					  PreparedStatement insertStatement =  con.prepareStatement("INSERT INTO User VALUES('"+name+"','"+password+"','"+email+"','"+firstName+ "','" +lastName+"','"
+				  +gender+"','"+day+"','"+month+"','"+year+"')");
 					  insertStatement.executeUpdate();
 					  output="RegisterTrue";
 				  }
@@ -97,11 +100,12 @@ public class Android
 	{
 		  String output="WS : ";
 		  try
+		  
 		  {
-			  UserAuth appData = new UserAuth("","","","","");
+			  UserAuth updateData = new UserAuth("","","","",0,0,0);
 			  try
 			  { 
-				  appData = (UserAuth) new ObjectInputStream(new ByteArrayInputStream(data)).readObject();
+				  updateData = (UserAuth) new ObjectInputStream(new ByteArrayInputStream(data)).readObject();
 			  }
 			  catch(Exception e)
 			  {
@@ -111,36 +115,21 @@ public class Android
 			  Class.forName("com.mysql.jdbc.Driver");
 			  Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Users","root","root");
 			  
-			  if(appData.getEmail()==null)
-			  {
-				  String name=appData.getUsername();
-				  String password=appData.getPassword();
-				  
-				  PreparedStatement statement =  con.prepareStatement("SELECT * FROM User WHERE username='"+name+"' AND password='"+password+"'");
-				  ResultSet result = statement.executeQuery();
-				  
-				  if(!result.next())
-				  {
-					  output = output.concat("STATEMENT ERROR");
-				  }
-				  else
-				  {
-					  output="LoginTrue";
-				  }
-			  }
-			  else
-			  {
-				  String name=appData.getUsername();
-				  String firstName = appData.getFirstName();
-				  String lastName = appData.getLastName();
+				  String name = updateData.getUsername();
+				  String firstName = updateData.getFirstName();
+				  String lastName = updateData.getLastName();
+				  String gender = updateData.getGender();
+				  int day = updateData.getDay();
+				  int month = updateData.getMonth();
+				  int year = updateData.getYear();
 				  
 				  PreparedStatement statement =  con.prepareStatement("SELECT * FROM User WHERE username='"+name+"'");
 				  ResultSet result = statement.executeQuery();
 				  
-				  if(!result.next())
+				  if(result.next())
 				  {
 					  PreparedStatement insertStatement =  con.prepareStatement("UPDATE User SET firstName='"+firstName+"', "+"lastName='"+lastName+"', "
-							  +"WHERE username='"+name+"'");
+				  +"gender='"+gender+"', "+"day='"+day+"', "+"month='"+month+"', "+"year='"+year+"'"+"WHERE username='"+name+"'");
 					  insertStatement.executeUpdate();
 					  output="ProfileUpdateTrue";
 				  }
@@ -148,7 +137,6 @@ public class Android
 				  {
 					  output="ProfileUpdateFalse";
 				  }
-			  }
 		  }
 		  catch(Exception e)
 		  {
@@ -156,7 +144,50 @@ public class Android
 		  }
 		   
 		  return output;
-	}	
+	}
+	
+	public String delete(byte[] data)
+	{
+		  String output="WS : ";
+		  try
+		  
+		  {
+			  UserAuth updateData = new UserAuth("","","","",0,0,0);
+			  try
+			  { 
+				  updateData = (UserAuth) new ObjectInputStream(new ByteArrayInputStream(data)).readObject();
+			  }
+			  catch(Exception e)
+			  {
+				  output = output.concat("CAST error "+e.toString());
+			  }
+			  
+			  Class.forName("com.mysql.jdbc.Driver");
+			  Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Users","root","root");
+			  
+				  String name = updateData.getUsername();
+				  
+				  PreparedStatement statement =  con.prepareStatement("SELECT * FROM User WHERE username='"+name+"'");
+				  ResultSet result = statement.executeQuery();
+				  
+				  if(result.next())
+				  {
+					  PreparedStatement insertStatement =  con.prepareStatement("DELETE FROM User where username='"+name+"'");
+					  insertStatement.executeUpdate();
+					  output="DeleteTrue";
+				  }
+				  else
+				  {
+					  output="DeleteFalse";
+				  }
+		  }
+		  catch(Exception e)
+		  {
+			  output = output.concat("GENERAL error "+e.toString());
+		  }
+		   
+		  return output;
+	}
 	
 	@Resource(name="jdbc/Users")
 	public String getLocations(byte[] data)
