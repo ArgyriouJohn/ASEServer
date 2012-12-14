@@ -60,17 +60,59 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="addVisibility">
+   <element name="addReview">
     <complexType>
      <sequence>
       <element name="data" type="xsd:base64Binary"/>
      </sequence>
     </complexType>
    </element>
-   <element name="addVisibilityResponse">
+   <element name="addReviewResponse">
     <complexType>
      <sequence>
-      <element name="addVisibilityReturn" type="xsd:string"/>
+      <element name="addReviewReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getReviews">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getReviewsResponse">
+    <complexType>
+     <sequence>
+      <element name="getReviewsReturn" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteCheckIn">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteCheckInResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteCheckInReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteReview">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteReviewResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteReviewReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -116,58 +158,36 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="addReview">
+   <element name="addVisibility">
     <complexType>
      <sequence>
       <element name="data" type="xsd:base64Binary"/>
      </sequence>
     </complexType>
    </element>
-   <element name="addReviewResponse">
+   <element name="addVisibilityResponse">
     <complexType>
      <sequence>
-      <element name="addReviewReturn" type="xsd:string"/>
+      <element name="addVisibilityReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
-   <element name="getReviews">
+   <element name="alterReview">
     <complexType>
      <sequence>
       <element name="data" type="xsd:base64Binary"/>
      </sequence>
     </complexType>
    </element>
-   <element name="getReviewsResponse">
+   <element name="alterReviewResponse">
     <complexType>
      <sequence>
-      <element name="getReviewsReturn" type="xsd:base64Binary"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="deleteCheckIn">
-    <complexType>
-     <sequence>
-      <element name="data" type="xsd:base64Binary"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="deleteCheckInResponse">
-    <complexType>
-     <sequence>
-      <element name="deleteCheckInReturn" type="xsd:string"/>
+      <element name="alterReviewReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
   </schema>
  </wsdl:types>
-
-   <wsdl:message name="deleteCheckInResponse">
-
-      <wsdl:part element="impl:deleteCheckInResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
 
    <wsdl:message name="updateProfileRequest">
 
@@ -177,17 +197,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="retrieveProfileResponse">
+   <wsdl:message name="alterReviewRequest">
 
-      <wsdl:part element="impl:retrieveProfileResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="updateProfileResponse">
-
-      <wsdl:part element="impl:updateProfileResponse" name="parameters">
+      <wsdl:part element="impl:alterReview" name="parameters">
 
       </wsdl:part>
 
@@ -209,9 +221,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="getReviewsResponse">
+   <wsdl:message name="deleteReviewRequest">
 
-      <wsdl:part element="impl:getReviewsResponse" name="parameters">
+      <wsdl:part element="impl:deleteReview" name="parameters">
 
       </wsdl:part>
 
@@ -220,14 +232,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="loginOrRegisterRequest">
 
       <wsdl:part element="impl:loginOrRegister" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="addVisibilityResponse">
-
-      <wsdl:part element="impl:addVisibilityResponse" name="parameters">
 
       </wsdl:part>
 
@@ -289,6 +293,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="deleteReviewResponse">
+
+      <wsdl:part element="impl:deleteReviewResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:message name="getReviewsRequest">
 
       <wsdl:part element="impl:getReviews" name="parameters">
@@ -297,17 +309,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="getCheckInsResponse">
+   <wsdl:message name="alterReviewResponse">
 
-      <wsdl:part element="impl:getCheckInsResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="addCheckInResponse">
-
-      <wsdl:part element="impl:addCheckInResponse" name="parameters">
+      <wsdl:part element="impl:alterReviewResponse" name="parameters">
 
       </wsdl:part>
 
@@ -316,6 +320,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="retrieveProfileRequest">
 
       <wsdl:part element="impl:retrieveProfile" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCheckInResponse">
+
+      <wsdl:part element="impl:addCheckInResponse" name="parameters">
 
       </wsdl:part>
 
@@ -332,6 +344,54 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="addReviewRequest">
 
       <wsdl:part element="impl:addReview" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteCheckInResponse">
+
+      <wsdl:part element="impl:deleteCheckInResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveProfileResponse">
+
+      <wsdl:part element="impl:retrieveProfileResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateProfileResponse">
+
+      <wsdl:part element="impl:updateProfileResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getReviewsResponse">
+
+      <wsdl:part element="impl:getReviewsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addVisibilityResponse">
+
+      <wsdl:part element="impl:addVisibilityResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCheckInsResponse">
+
+      <wsdl:part element="impl:getCheckInsResponse" name="parameters">
 
       </wsdl:part>
 
@@ -387,13 +447,49 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="addVisibility">
+      <wsdl:operation name="addReview">
 
-         <wsdl:input message="impl:addVisibilityRequest" name="addVisibilityRequest">
+         <wsdl:input message="impl:addReviewRequest" name="addReviewRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:addVisibilityResponse" name="addVisibilityResponse">
+         <wsdl:output message="impl:addReviewResponse" name="addReviewResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getReviews">
+
+         <wsdl:input message="impl:getReviewsRequest" name="getReviewsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getReviewsResponse" name="getReviewsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteCheckIn">
+
+         <wsdl:input message="impl:deleteCheckInRequest" name="deleteCheckInRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteCheckInResponse" name="deleteCheckInResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteReview">
+
+         <wsdl:input message="impl:deleteReviewRequest" name="deleteReviewRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteReviewResponse" name="deleteReviewResponse">
 
        </wsdl:output>
 
@@ -435,37 +531,25 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="addReview">
+      <wsdl:operation name="addVisibility">
 
-         <wsdl:input message="impl:addReviewRequest" name="addReviewRequest">
+         <wsdl:input message="impl:addVisibilityRequest" name="addVisibilityRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:addReviewResponse" name="addReviewResponse">
+         <wsdl:output message="impl:addVisibilityResponse" name="addVisibilityResponse">
 
        </wsdl:output>
 
       </wsdl:operation>
 
-      <wsdl:operation name="getReviews">
+      <wsdl:operation name="alterReview">
 
-         <wsdl:input message="impl:getReviewsRequest" name="getReviewsRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:getReviewsResponse" name="getReviewsResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="deleteCheckIn">
-
-         <wsdl:input message="impl:deleteCheckInRequest" name="deleteCheckInRequest">
+         <wsdl:input message="impl:alterReviewRequest" name="alterReviewRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:deleteCheckInResponse" name="deleteCheckInResponse">
+         <wsdl:output message="impl:alterReviewResponse" name="alterReviewResponse">
 
        </wsdl:output>
 
@@ -549,17 +633,71 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="addVisibility">
+      <wsdl:operation name="addReview">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="addVisibilityRequest">
+         <wsdl:input name="addReviewRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="addVisibilityResponse">
+         <wsdl:output name="addReviewResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getReviews">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getReviewsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getReviewsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteCheckIn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteCheckInRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteCheckInResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteReview">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteReviewRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteReviewResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -621,17 +759,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="addReview">
+      <wsdl:operation name="addVisibility">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="addReviewRequest">
+         <wsdl:input name="addVisibilityRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="addReviewResponse">
+         <wsdl:output name="addVisibilityResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -639,35 +777,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="getReviews">
+      <wsdl:operation name="alterReview">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="getReviewsRequest">
+         <wsdl:input name="alterReviewRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="getReviewsResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="deleteCheckIn">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="deleteCheckInRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="deleteCheckInResponse">
+         <wsdl:output name="alterReviewResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -681,7 +801,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdl:port binding="impl:ASEProjectServicesSoapBinding" name="ASEProjectServices">
 
-         <wsdlsoap:address location="http://localhost:8080/ASEServer/services/ASEProjectServices"/>
+         <wsdlsoap:address location="http://localhost:8180/ASEServer/services/ASEProjectServices"/>
 
       </wsdl:port>
 

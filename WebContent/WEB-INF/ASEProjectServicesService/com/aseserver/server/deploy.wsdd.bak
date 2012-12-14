@@ -32,7 +32,16 @@
       <operation name="retrieveProfile" qname="operNS:retrieveProfile" xmlns:operNS="http://server.aseserver.com" returnQName="retNS:retrieveProfileReturn" xmlns:retNS="http://server.aseserver.com" returnType="rtns:base64Binary" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:data" xmlns:pns="http://server.aseserver.com" type="tns:base64Binary" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <operation name="addVisibility" qname="operNS:addVisibility" xmlns:operNS="http://server.aseserver.com" returnQName="retNS:addVisibilityReturn" xmlns:retNS="http://server.aseserver.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      <operation name="addReview" qname="operNS:addReview" xmlns:operNS="http://server.aseserver.com" returnQName="retNS:addReviewReturn" xmlns:retNS="http://server.aseserver.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:data" xmlns:pns="http://server.aseserver.com" type="tns:base64Binary" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getReviews" qname="operNS:getReviews" xmlns:operNS="http://server.aseserver.com" returnQName="retNS:getReviewsReturn" xmlns:retNS="http://server.aseserver.com" returnType="rtns:base64Binary" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:data" xmlns:pns="http://server.aseserver.com" type="tns:base64Binary" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteCheckIn" qname="operNS:deleteCheckIn" xmlns:operNS="http://server.aseserver.com" returnQName="retNS:deleteCheckInReturn" xmlns:retNS="http://server.aseserver.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:data" xmlns:pns="http://server.aseserver.com" type="tns:base64Binary" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteReview" qname="operNS:deleteReview" xmlns:operNS="http://server.aseserver.com" returnQName="retNS:deleteReviewReturn" xmlns:retNS="http://server.aseserver.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:data" xmlns:pns="http://server.aseserver.com" type="tns:base64Binary" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
       <operation name="addLocations" qname="operNS:addLocations" xmlns:operNS="http://server.aseserver.com" returnQName="retNS:addLocationsReturn" xmlns:retNS="http://server.aseserver.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
@@ -44,16 +53,13 @@
       <operation name="getCheckIns" qname="operNS:getCheckIns" xmlns:operNS="http://server.aseserver.com" returnQName="retNS:getCheckInsReturn" xmlns:retNS="http://server.aseserver.com" returnType="rtns:base64Binary" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:data" xmlns:pns="http://server.aseserver.com" type="tns:base64Binary" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <operation name="addReview" qname="operNS:addReview" xmlns:operNS="http://server.aseserver.com" returnQName="retNS:addReviewReturn" xmlns:retNS="http://server.aseserver.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      <operation name="addVisibility" qname="operNS:addVisibility" xmlns:operNS="http://server.aseserver.com" returnQName="retNS:addVisibilityReturn" xmlns:retNS="http://server.aseserver.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:data" xmlns:pns="http://server.aseserver.com" type="tns:base64Binary" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <operation name="getReviews" qname="operNS:getReviews" xmlns:operNS="http://server.aseserver.com" returnQName="retNS:getReviewsReturn" xmlns:retNS="http://server.aseserver.com" returnType="rtns:base64Binary" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      <operation name="alterReview" qname="operNS:alterReview" xmlns:operNS="http://server.aseserver.com" returnQName="retNS:alterReviewReturn" xmlns:retNS="http://server.aseserver.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:data" xmlns:pns="http://server.aseserver.com" type="tns:base64Binary" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <operation name="deleteCheckIn" qname="operNS:deleteCheckIn" xmlns:operNS="http://server.aseserver.com" returnQName="retNS:deleteCheckInReturn" xmlns:retNS="http://server.aseserver.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
-        <parameter qname="pns:data" xmlns:pns="http://server.aseserver.com" type="tns:base64Binary" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-      </operation>
-      <parameter name="allowedMethods" value="addCheckIn addLocations retrieveProfile loginOrRegister getReviews getCheckIns deleteProfile addReview updateProfile deleteCheckIn addVisibility"/>
+      <parameter name="allowedMethods" value="addCheckIn addLocations retrieveProfile loginOrRegister alterReview getReviews getCheckIns deleteReview deleteProfile addReview updateProfile addVisibility deleteCheckIn"/>
 
   </service>
 </deployment>

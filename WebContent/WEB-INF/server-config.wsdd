@@ -35,28 +35,34 @@
   <ns1:operation name="retrieveProfile" qname="ns4:retrieveProfile" returnQName="ns4:retrieveProfileReturn" returnType="xsd:base64Binary" soapAction="" xmlns:ns4="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns4:data" type="xsd:base64Binary"/>
   </ns1:operation>
-  <ns1:operation name="addVisibility" qname="ns5:addVisibility" returnQName="ns5:addVisibilityReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="addReview" qname="ns5:addReview" returnQName="ns5:addReviewReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns5:data" type="xsd:base64Binary"/>
   </ns1:operation>
-  <ns1:operation name="addLocations" qname="ns6:addLocations" returnQName="ns6:addLocationsReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="getReviews" qname="ns6:getReviews" returnQName="ns6:getReviewsReturn" returnType="xsd:base64Binary" soapAction="" xmlns:ns6="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns6:data" type="xsd:base64Binary"/>
   </ns1:operation>
-  <ns1:operation name="addCheckIn" qname="ns7:addCheckIn" returnQName="ns7:addCheckInReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="deleteCheckIn" qname="ns7:deleteCheckIn" returnQName="ns7:deleteCheckInReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns7:data" type="xsd:base64Binary"/>
   </ns1:operation>
-  <ns1:operation name="getCheckIns" qname="ns8:getCheckIns" returnQName="ns8:getCheckInsReturn" returnType="xsd:base64Binary" soapAction="" xmlns:ns8="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="deleteReview" qname="ns8:deleteReview" returnQName="ns8:deleteReviewReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns8:data" type="xsd:base64Binary"/>
   </ns1:operation>
-  <ns1:operation name="addReview" qname="ns9:addReview" returnQName="ns9:addReviewReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="addLocations" qname="ns9:addLocations" returnQName="ns9:addLocationsReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns9:data" type="xsd:base64Binary"/>
   </ns1:operation>
-  <ns1:operation name="getReviews" qname="ns10:getReviews" returnQName="ns10:getReviewsReturn" returnType="xsd:base64Binary" soapAction="" xmlns:ns10="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="addCheckIn" qname="ns10:addCheckIn" returnQName="ns10:addCheckInReturn" returnType="xsd:string" soapAction="" xmlns:ns10="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns10:data" type="xsd:base64Binary"/>
   </ns1:operation>
-  <ns1:operation name="deleteCheckIn" qname="ns11:deleteCheckIn" returnQName="ns11:deleteCheckInReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="getCheckIns" qname="ns11:getCheckIns" returnQName="ns11:getCheckInsReturn" returnType="xsd:base64Binary" soapAction="" xmlns:ns11="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns11:data" type="xsd:base64Binary"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="addCheckIn addLocations retrieveProfile loginOrRegister getReviews getCheckIns deleteProfile addReview updateProfile deleteCheckIn addVisibility"/>
+  <ns1:operation name="addVisibility" qname="ns12:addVisibility" returnQName="ns12:addVisibilityReturn" returnType="xsd:string" soapAction="" xmlns:ns12="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:data" type="xsd:base64Binary"/>
+  </ns1:operation>
+  <ns1:operation name="alterReview" qname="ns13:alterReview" returnQName="ns13:alterReviewReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://server.aseserver.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:data" type="xsd:base64Binary"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="addCheckIn addLocations retrieveProfile loginOrRegister alterReview getReviews getCheckIns deleteReview deleteProfile addReview updateProfile addVisibility deleteCheckIn"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="ASEProjectServices"/>
   <ns1:parameter name="className" value="com.aseserver.server.ASEProjectServices"/>
